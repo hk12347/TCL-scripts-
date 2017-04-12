@@ -1,6 +1,6 @@
 ## tvmaze LOOKUP SCRIPT 1.1
 ## ###########################################
-## The script doesn't use JSON (only reqexp)
+## The script doesn't need JSON TCL package (only reqexp used)
 ## Much cleaner version/output than the TVmaze.com Script (Try Google)
 ##
 ##--------------------------------------------

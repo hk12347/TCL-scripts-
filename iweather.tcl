@@ -65,13 +65,7 @@ namespace eval iniweather {
 		
 		# Condition
 		regexp -nocase -- {"condition":(.*?),} $data -> desc; regexp {"(.*?)"} $desc -> desc;
-		
-		#test data
-		#putserv "PRIVMSG $chan :[concat status: \002$status\002]"
-		#putserv "PRIVMSG $chan :[concat url: \002$get\002]"
-		#putserv "PRIVMSG $chan :[concat data: \002$token\002]"
-		#putserv "PRIVMSG $chan :[concat city: \002$city\002]"
-		
+				
 		# Date time & Timezone (from the current observation)
 		regexp -nocase -- {"current_observation":(.*?)"tz_offset_hours"} $data -> tmp
 		regexp -nocase -- {"epoch":(.*?),} $tmp -> dt; regsub {^[\ ]*} $dt "" dt;

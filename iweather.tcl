@@ -10,8 +10,8 @@
 ##  Usage: !weather <city>
 ##  ---
 ##  <x1> !weather Tampere
-##  <x2> * Sää: Tampere, Finland: Mostly Cloudy, 8°C, Kosteus: 62%, Tuuli: 17 km/h, Tuulen hyytävyys: 5°C, 
-##        Päivitetty: 16:50 EEST (Nov 05, 2015)
+##  <x2> * SÃ¤Ã¤: Tampere, Finland: Mostly Cloudy, 8Â°C, Kosteus: 62%, Tuuli: 17 km/h, Tuulen hyytÃ¤vyys: 5Â°C, 
+##        PÃ¤ivitetty: 16:50 EEST (Nov 05, 2015)
 ##############################################
 package require http
 package require tls
@@ -22,7 +22,8 @@ namespace eval iniweather {
 	# search url	
 	set url "https://www.wunderground.com/cgi-bin/findweather/getForecast?query="
 	set urlback "&MR=1"
-  # user agent
+	
+  	# user agent
 	variable agent "Mozilla/6.0 (Windows NT 6.2; rv:40.0) Gecko/20150101 Firefox/40.0";
 	
 	proc getweather {nick uhand hand args} {
@@ -32,14 +33,14 @@ namespace eval iniweather {
 		set search [lindex $input 0]
 		set get [concat $iniweather::url$search$iniweather::urlback]
 				
-    variable agent;
+    		variable agent;
 		http::config -useragent $agent;
-    http::register https 443 [list tls::socket -tls1 1]
+    		http::register https 443 [list tls::socket -tls1 1]
 		set token [http::geturl "${get}" -timeout 30000]
-    set status [http::status $token]
-    set data [http::data $token]
-    http::cleanup $token
-    http::unregister https
+    		set status [http::status $token]
+    		set data [http::data $token]
+    		http::cleanup $token
+    		http::unregister https
 		
 		set city ""; set temp ""; set windspeed ""; set windchill ""; set humidity ""; 
 		set country ""; set date ""; set desc ""; set dt ""; set tz ""; set tmp "";
@@ -80,9 +81,9 @@ namespace eval iniweather {
     
 		if {$city != ""} {
 			if {$windchill == "null"} {
-				putserv "PRIVMSG $chan :[concat \002$nick\002, * Sää: \002$city, $country:\002 $desc, $temp\°C, \002Kosteus:\002 $humidity\%, \002Tuuli:\002 $windspeed km\/h, \002Päivitetty: \002$datetime\002]"
+				putserv "PRIVMSG $chan :[concat \002$nick\002, * SÃ¤Ã¤: \002$city, $country:\002 $desc, $temp\Â°C, \002Kosteus:\002 $humidity\%, \002Tuuli:\002 $windspeed km\/h, \002PÃ¤ivitetty: \002$datetime\002]"
 			} else {
-				putserv "PRIVMSG $chan :[concat \002$nick\002, * Sää: \002$city, $country:\002 $desc, $temp\°C, \002Kosteus:\002 $humidity\%, \002Tuuli:\002 $windspeed km\/h, \002Tuulen hyytävyys:\002 $windchill\°C, \002Päivitetty: \002$datetime\002]"
+				putserv "PRIVMSG $chan :[concat \002$nick\002, * SÃ¤Ã¤: \002$city, $country:\002 $desc, $temp\Â°C, \002Kosteus:\002 $humidity\%, \002Tuuli:\002 $windspeed km\/h, \002Tuulen hyytÃ¤vyys:\002 $windchill\Â°C, \002PÃ¤ivitetty: \002$datetime\002]"
 			}
 		}
 	}

@@ -1,11 +1,11 @@
 ## tvmaze LOOKUP SCRIPT 1.1
-## ###########################################
-## The script doesn't need JSON TCL package (only reqexp used)
+## ####################################################################
+## The script doesn't require JSON TCL package (only reqexp used)
 ## Much cleaner version/output than the TVmaze.com Script (Try Google)
 ##
 ##--------------------------------------------
 ## hk / Sep 24, 2015
-##############################################
+## ####################################################################
 #
 # Usage: !tv <show>
 #        !tvnext <show>
@@ -20,7 +20,7 @@
 #<x1> !tvnext simpsons
 #<x2> The next episode of The Simpsons is #27x08 - Paths of Glory, it will air on Sunday at 20:00 (Dec/06/2015) (America/New_York)
 #
-###############################################
+## ####################################################################
 #
 #  Changelog:
 #
@@ -32,7 +32,7 @@
 #  Todo: !tvprev (show the previous episode)
 #        - add more paramaters and information ()
 # 
-##############################################
+## ####################################################################
 package require http 2.7; # TCL 8.5
 
     namespace eval tvmaze {
